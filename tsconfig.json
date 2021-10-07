@@ -1,0 +1,14 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es6",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "sourceMap": true
+  }
+}
