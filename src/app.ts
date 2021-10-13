@@ -1,7 +1,6 @@
-import express from 'express';
-
+import 'reflect-metadata';
+import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
-import knex from './knex/knex';
 
 dotenv.config();
 
@@ -16,7 +15,7 @@ app.listen(port, host, () => {
   console.log('Now listening port 3000');
 });
 
-app.get('/', (req: express.Request, res: express.Response) => {
+app.get('/', (req: Request, res: Response) => {
   const { id }: { id: string } = req.query as { id: string };
   res.status(200).send(id + 1);
 });
