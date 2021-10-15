@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import { Container } from 'typedi';
+import UnitOfWork from '@implementations/UnitOfWork';
 
 dotenv.config();
 
@@ -10,6 +12,14 @@ const app = express();
 
 const port = +(APP_PORT as string);
 const host = APP_HOST as string;
+
+const main = async () => {
+  const test = Container.get(UnitOfWork);
+
+  test.Employees.getAll();
+};
+
+main();
 
 app.listen(port, host, () => {
   console.log('Now listening port 3000');

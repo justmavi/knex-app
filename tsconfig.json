@@ -4,6 +4,7 @@
     "target": "es6",
     "module": "CommonJS",
     "moduleResolution": "node",
+    "baseUrl": "src",
     "noEmitOnError": true,
     "removeComments": true,
     "strictNullChecks": true,
@@ -12,6 +13,12 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "plugins": [{ "transform": "ts-nameof", "type": "raw" }],
+    "paths": {
+      "@models/*": ["domain/core/*"],
+      "@interfaces/*": ["domain/interfaces/*"],
+      "@implementations/*": ["infrastructure/implementations/*"],
+      "@data/*": ["infrastructure/data/*"]
+    },
+    "plugins": [{ "transform": "ts-nameof", "type": "raw" }]
   }
 }
