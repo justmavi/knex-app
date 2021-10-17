@@ -5,6 +5,7 @@ import { Container } from 'typedi';
 import UnitOfWork from '@implementations/UnitOfWork';
 import { Knex } from 'knex';
 import knex from '@data/knex/knex';
+import Employee from '@models/Employee';
 dotenv.config();
 
 const { APP_PORT, APP_HOST } = process.env;
@@ -18,7 +19,17 @@ const main = async () => {
   const context: Knex.Transaction = await knex.transaction();
   Container.set('context', context);
 
-  Container.get(UnitOfWork);
+  const test = Container.get(UnitOfWork);
+
+  const employee = new Employee();
+  employee.profileId = 7866841;
+
+  const insertedDoc: Employee = await test.Employees.insert(employee);
+  console.log('inserted doc: ', insertedDoc.id);
+
+  await test.commit();
+  const getInsertedDoc = await test.Employees.getById(4);
+  console.log('getInsertedDoc: ', getInsertedDoc);
 };
 
 main();

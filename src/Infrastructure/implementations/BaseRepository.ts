@@ -5,7 +5,6 @@ export default class BaseRepository<T> implements IAsyncRepository<T> {
   private readonly context;
   private readonly entities: Knex.QueryBuilder;
 
-  // All my attempts to use the nameof<T>() instead of tableName were failed
   constructor(context: Knex.Transaction, tableName: string) {
     this.context = context;
     this.entities = context<T>(tableName);
@@ -17,19 +16,22 @@ export default class BaseRepository<T> implements IAsyncRepository<T> {
   async getAll(): Promise<T[]> {
     return await this.entities.select('*');
   }
-  getById(id: number): Promise<T> {
-    throw new Error('Method not implemented.');
+  async getById(id: number): Promise<T> {
+    return await this.entities.select('*').where({ id }).limit(1).first();
   }
-  insert(item: T): Promise<void> {
-    throw new Error('Method not implemented.');
+  async insert(item: T): Promise<T> {
+    return (await this.entities.insert(item).returning<T>('*')) as T;
   }
-  insertMany(items: T[]): Promise<void> {
-    throw new Error('Method not implemented.');
+  async insertMany(items: T[]): Promise<T[]> {
+    return (await this.entities.insert(items).returning<T[]>('*')) as T[];
   }
-  update(item: T): Promise<void> {
-    throw new Error('Method not implemented.');
+  async update(id: number, item: T): Promise<T> {
+    return (await this.entities
+      .where({ id })
+      .update(item)
+      .returning<T>('*')) as T;
   }
-  delete(item: T): Promise<void> {
-    throw new Error('Method not implemented.');
+  async delete(id: number): Promise<T> {
+    return (await this.entities.where({ id }).del().returning<T>('*')) as T;
   }
 }

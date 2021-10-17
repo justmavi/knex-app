@@ -1,11 +1,11 @@
 export default class Employee {
-  id: number;
-  profileId: number;
-  weekPosts: number;
-  weekAnswers: number;
-  allPosts: number;
-  allAnswers: number;
-  topPostsPerWeek: number;
-  topAnswersPerWeek: number;
-  createdAt: Date;
+  public id: number;
+  public profileId: number;
+  public weekPosts: number;
+  public weekAnswers: number;
+  public allPosts: number;
+  public allAnswers: number;
+  public topPostsPerWeek: number;
+  public topAnswersPerWeek: number;
+  public createdAt: Date;
 }
