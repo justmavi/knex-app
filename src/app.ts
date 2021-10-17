@@ -3,7 +3,8 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import { Container } from 'typedi';
 import UnitOfWork from '@implementations/UnitOfWork';
-
+import { Knex } from 'knex';
+import knex from '@data/knex/knex';
 dotenv.config();
 
 const { APP_PORT, APP_HOST } = process.env;
@@ -14,9 +15,10 @@ const port = +(APP_PORT as string);
 const host = APP_HOST as string;
 
 const main = async () => {
-  const test = Container.get(UnitOfWork);
+  const context: Knex.Transaction = await knex.transaction();
+  Container.set('context', context);
 
-  test.Employees.getAll();
+  Container.get(UnitOfWork);
 };
 
 main();

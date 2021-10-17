@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '../../../../.env' });
+dotenv.config({ path: 'C:\\Users\\grish\\Desktop\\knex-app\\.env' });
 
 export const development = {
   client: 'pg',
