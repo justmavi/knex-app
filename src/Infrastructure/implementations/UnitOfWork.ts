@@ -1,23 +1,23 @@
 import { Knex } from 'knex';
-import { Service } from 'typedi';
+import { Inject, Service } from 'typedi';
 
 import Employee from '@models/Employee';
 import IAsyncRepository from '@interfaces/IAsyncRepository';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
-import BaseRepository from './BaseRepository';
-import KnexService from 'services/KnexService';
+import BaseRepository from '@implementations/BaseRepository';
+import * as TableNames from '@data/table_names';
 
 @Service()
 export default class UnitOfWork implements IUnitOfWork {
   private readonly context: Knex.Transaction;
   private readonly employeesRepository: IAsyncRepository<Employee>;
 
-  constructor(knex: KnexService) {
-    this.context = knex.context;
+  constructor(@Inject('context') context: Knex.Transaction) {
+    this.context = context;
 
     this.employeesRepository = new BaseRepository<Employee>(
-      this.context,
-      nameof<Employee>()
+      context,
+      TableNames.TABLE_EMPLOYEE
     );
   }
 

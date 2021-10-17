@@ -3,7 +3,7 @@ import IAsyncRepository from '@interfaces/IAsyncRepository';
 
 export default class BaseRepository<T> implements IAsyncRepository<T> {
   private readonly context;
-  private readonly entities;
+  private readonly entities: Knex.QueryBuilder;
 
   // All my attempts to use the nameof<T>() instead of tableName were failed
   constructor(context: Knex.Transaction, tableName: string) {
@@ -14,8 +14,8 @@ export default class BaseRepository<T> implements IAsyncRepository<T> {
   get(predicate: (model: T) => boolean): Promise<T> {
     throw new Error('Method not implemented.');
   }
-  getAll(): Promise<T> {
-    throw new Error('Method not implemented.');
+  async getAll(): Promise<T[]> {
+    return await this.entities.select('*');
   }
   getById(id: number): Promise<T> {
     throw new Error('Method not implemented.');
