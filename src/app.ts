@@ -19,17 +19,7 @@ const main = async () => {
   const context: Knex.Transaction = await knex.transaction();
   Container.set('context', context);
 
-  const test = Container.get(UnitOfWork);
-
-  const employee = new Employee();
-  employee.profileId = 7866841;
-
-  const insertedDoc: Employee = await test.Employees.insert(employee);
-  console.log('inserted doc: ', insertedDoc.id);
-
-  await test.commit();
-  const getInsertedDoc = await test.Employees.getById(4);
-  console.log('getInsertedDoc: ', getInsertedDoc);
+  Container.get(UnitOfWork);
 };
 
 main();
