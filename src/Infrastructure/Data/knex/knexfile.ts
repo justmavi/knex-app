@@ -1,15 +1,16 @@
 import dotenv from 'dotenv';
+import { Knex } from 'knex';
 
-dotenv.config({ path: 'C:\\Users\\grish\\Desktop\\knex-app\\.env' });
+dotenv.config({ path: 'C:\\Users\\grisha.poghosyan\\Desktop\\knex-app\\.env' });
 
-export const development = {
+export const development: Knex.Config = {
   client: 'pg',
   connection: process.env.POSTGRES_CONNECTION_STRING,
   migrations: {
     tableName: 'knex_migration',
     directory: './migrations',
   },
-  seed: {
-    direcory: './seeds',
+  seeds: {
+    directory: './seeds',
   },
 };
