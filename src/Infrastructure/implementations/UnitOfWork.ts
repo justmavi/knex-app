@@ -1,11 +1,11 @@
 import { Knex } from 'knex';
 import { Inject, Service } from 'typedi';
 
-import Employee from '@models/Employee';
+import * as TableNames from '@data/table_names';
+import BaseRepository from '@implementations/BaseRepository';
 import IAsyncRepository from '@interfaces/IAsyncRepository';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
-import BaseRepository from '@implementations/BaseRepository';
-import * as TableNames from '@data/table_names';
+import Employee from '@models/Employee';
 
 @Service()
 export default class UnitOfWork implements IUnitOfWork {

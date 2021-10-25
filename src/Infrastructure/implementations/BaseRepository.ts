@@ -14,32 +14,33 @@ export default class BaseRepository<T> implements IAsyncRepository<T> {
     this.tableName = tableName;
   }
 
-  get(predicate: (model: T) => boolean): Promise<T> {
-    throw new Error('Method not implemented.');
-  }
-  async getAll(): Promise<T[]> {
+  public async getAll(): Promise<T[]> {
     return await this.entities.select('*');
   }
-  async getById(id: number): Promise<T> {
+  public async getById(id: number): Promise<T> {
     return await this.entities.where({ id }).first();
   }
-  async insert(item: T): Promise<T> {
+  public async insert(item: T): Promise<T> {
     const [result] = <T[]>await this.entities.insert(item).returning<T>('*');
     return result;
   }
-  async insertMany(items: T[]): Promise<T[]> {
+  public async insertMany(items: T[]): Promise<T[]> {
     return <T[]>await this.entities.insert(items).returning<T[]>('*');
   }
-  async update(id: number, item: T): Promise<T> {
+  public async update(id: number, item: T): Promise<T> {
     const [result] = <T[]>(
       await this.entities.where({ id }).update(item).returning<T>('*')
     );
     return result;
   }
-  async delete(id: number): Promise<T> {
+  public async delete(id: number): Promise<T> {
     const [result] = <T[]>(
       await this.entities.where({ id }).del().returning<T>('*')
     );
     return result;
+  }
+
+  public asQueryable(): Knex.QueryInterface {
+    return this.entities;
   }
 }
