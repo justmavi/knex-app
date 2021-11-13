@@ -1,4 +1,5 @@
 import { Knex } from 'knex';
+
 import IAsyncRepository from '@interfaces/IAsyncRepository';
 
 export default class BaseRepository<T> implements IAsyncRepository<T> {
