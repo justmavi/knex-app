@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { Knex } from 'knex';
 
-// dotenv.config(); //({ path: 'C:\\Users\\grisha.poghosyan\\Desktop\\knex-app\\.env' });
+dotenv.config({ path: 'C:\\Users\\grish\\Desktop\\knex-app\\.env' });
 
 export const development: Knex.Config = {
   client: 'pg',
@@ -9,6 +9,7 @@ export const development: Knex.Config = {
   migrations: {
     tableName: 'knex_migration',
     directory: './migrations',
+    extension: 'ts',
   },
   seeds: {
     directory: './seeds',

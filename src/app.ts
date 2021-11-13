@@ -2,7 +2,6 @@ import 'reflect-metadata';
 
 import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
-import VkBot from 'node-vk-bot-api';
 import { Knex } from 'knex';
 import { Container } from 'typedi';
 
@@ -16,12 +15,6 @@ dotenv.config();
 const { APP_PORT, APP_HOST } = process.env;
 
 const app = express();
-
-const bot = new VkBot({
-  token: process.env.VK_GROUP_TOKEN as string,
-  confirmation: process.env.VK_CONFIRMATION,
-  group_id: +(process.env.VK_GROUP_ID as string),
-});
 
 const port: number = +(APP_PORT as string);
 const host: string = APP_HOST as string;
