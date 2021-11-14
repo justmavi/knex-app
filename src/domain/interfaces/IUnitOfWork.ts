@@ -1,8 +1,8 @@
-import IAsyncRepository from '@interfaces/IAsyncRepository';
+import IRepository from '@interfaces/IRepository';
 import Employee from '@models/Employee';
 
 export default interface IUnitOfWork {
-  Employees: IAsyncRepository<Employee>;
+  Employees: IRepository<Employee>;
   commit(): Promise<void>;
   rollback(): Promise<void>;
 }

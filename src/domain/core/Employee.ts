@@ -1,5 +1,6 @@
-export default class Employee {
-  public id: number;
+import Model from '@models/Model';
+
+export default class Employee extends Model<number> {
   public profileId: number;
   public weekPosts: number;
   public weekAnswers: number;
