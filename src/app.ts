@@ -23,7 +23,7 @@ const main = async () => {
   const context: Knex.Transaction = await knex.transaction();
   Container.set('context', context);
 
-  Container.get(UnitOfWork);
+  Container.get<IUnitOfWork>(UnitOfWork);
 
   app.listen(port, host, () => {
     console.log('Now listening port', port);

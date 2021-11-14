@@ -1,8 +1,11 @@
 import { Knex } from 'knex';
 
-import IAsyncRepository from '@interfaces/IAsyncRepository';
+import Model from '@models/Model';
+import IRepository from '@interfaces/IRepository';
 
-export default class BaseRepository<T> implements IAsyncRepository<T> {
+export default class BaseRepository<T extends Model<number>>
+  implements IRepository<T>
+{
   private readonly context: Knex.Transaction;
   private readonly tableName: string;
 
@@ -28,15 +31,15 @@ export default class BaseRepository<T> implements IAsyncRepository<T> {
   public async insertMany(items: T[]): Promise<T[]> {
     return <T[]>await this.entities.insert(items).returning<T[]>('*');
   }
-  public async update(id: number, item: T): Promise<T> {
+  public async update(item: T): Promise<T> {
     const [result] = <T[]>(
-      await this.entities.where({ id }).update(item).returning<T>('*')
+      await this.entities.where('id', item.id).update(item).returning<T>('*')
     );
     return result;
   }
-  public async delete(id: number): Promise<T> {
+  public async delete(item: T): Promise<T> {
     const [result] = <T[]>(
-      await this.entities.where({ id }).del().returning<T>('*')
+      await this.entities.where('id', item.id).del().returning<T>('*')
     );
     return result;
   }
