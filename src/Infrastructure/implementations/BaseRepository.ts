@@ -1,4 +1,5 @@
 import { Knex } from 'knex';
+
 import Model from '@models/Model';
 import IRepository from '@interfaces/IRepository';
 

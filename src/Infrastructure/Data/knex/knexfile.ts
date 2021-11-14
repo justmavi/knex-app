@@ -1,7 +1,10 @@
 import dotenv from 'dotenv';
 import { Knex } from 'knex';
 
-dotenv.config({ path: 'C:\\Users\\grish\\Desktop\\knex-app\\.env' });
+const root: string = process.cwd().split('src')[0];
+const path: string = root + '.env';
+
+dotenv.config({ path });
 
 export const development: Knex.Config = {
   client: 'pg',
