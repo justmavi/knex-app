@@ -1,5 +1,6 @@
 import { Knex } from 'knex';
-import Model from '@models/Model';
+
+import Model from '@abstractions/Model';
 
 export default interface IRepository<T extends Model<number>> {
   getAll(): Promise<T[]>;

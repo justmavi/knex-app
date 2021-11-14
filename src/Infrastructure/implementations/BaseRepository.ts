@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 
-import Model from '@models/Model';
+import Model from '@abstractions/Model';
 import IRepository from '@interfaces/IRepository';
 
 export default class BaseRepository<T extends Model<number>>

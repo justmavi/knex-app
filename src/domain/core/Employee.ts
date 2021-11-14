@@ -1,4 +1,4 @@
-import Model from '@models/Model';
+import Model from '@abstractions/Model';
 
 export default class Employee extends Model<number> {
   public profileId: number;
