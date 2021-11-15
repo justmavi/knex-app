@@ -1,1 +1,1 @@
-export const TABLE_EMPLOYEE: string = 'employee';
+export const TABLE_EMPLOYEE = 'employee';

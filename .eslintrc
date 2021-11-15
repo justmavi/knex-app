@@ -9,7 +9,10 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "rules": {
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "error"
+  },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
   },
   "env": {
     "node": true
