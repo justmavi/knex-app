@@ -19,7 +19,7 @@ const app = express();
 const port: number = +(APP_PORT as string);
 const host: string = APP_HOST as string;
 
-const main = async () => {
+const main = async (): Promise<void> => {
   const context: Knex.Transaction = await knex.transaction();
   Container.set('context', context);
 
@@ -30,4 +30,4 @@ const main = async () => {
   });
 };
 
-main();
+void main();
