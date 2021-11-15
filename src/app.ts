@@ -8,7 +8,6 @@ import { Container } from 'typedi';
 import knex from '@data/knex/knex';
 import UnitOfWork from '@implementations/UnitOfWork';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
-import Employee from '@models/Employee';
 
 dotenv.config();
 

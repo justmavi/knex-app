@@ -5,24 +5,24 @@ import * as TableNames from '@data/table_names';
 import BaseRepository from '@implementations/BaseRepository';
 import IRepository from '@interfaces/IRepository';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
-import Employee from '@models/Employee';
+import User from '@models/User';
 
 @Service()
 export default class UnitOfWork implements IUnitOfWork {
   private readonly context: Knex.Transaction;
-  private readonly employeesRepository: IRepository<Employee>;
+  private readonly usersRepository: IRepository<User>;
 
   constructor(@Inject('context') context: Knex.Transaction) {
     this.context = context;
 
-    this.employeesRepository = new BaseRepository<Employee>(
+    this.usersRepository = new BaseRepository<User>(
       context,
-      TableNames.TABLE_EMPLOYEE
+      TableNames.TABLE_USER
     );
   }
 
-  public get Employees(): IRepository<Employee> {
-    return this.employeesRepository;
+  public get Users(): IRepository<User> {
+    return this.usersRepository;
   }
 
   async commit(): Promise<void> {

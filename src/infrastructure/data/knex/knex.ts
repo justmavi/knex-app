@@ -1,7 +1,17 @@
-import knex from 'knex';
+import knex, { Knex } from 'knex';
 
-import * as config from './knexfile';
+import { development } from './knexfile';
 
-const env = process.env.ENVIRONMENT ?? 'development';
+let config: Knex.Config;
 
-export default knex(config[env]);
+// will be upgraded
+switch (process.env.ENVIRONMENT) {
+  case 'development':
+    config = development;
+    break;
+  default:
+    config = development;
+    break;
+}
+
+export default knex(config);

@@ -3,7 +3,7 @@ import { Knex } from 'knex';
 import Model from '@abstractions/Model';
 import IRepository from '@interfaces/IRepository';
 
-export default class BaseRepository<T extends Model<number>>
+export default class BaseRepository<T extends Model<number | string>>
   implements IRepository<T>
 {
   private readonly context: Knex.Transaction;
@@ -19,10 +19,10 @@ export default class BaseRepository<T extends Model<number>>
   }
 
   public async getAll(): Promise<T[]> {
-    return await this.entities.select('*');
+    return <T[]>await this.entities.select('*');
   }
-  public async getById(id: number): Promise<T> {
-    return await this.entities.where({ id }).first();
+  public async getById(id: number | string): Promise<T> {
+    return <T>await this.entities.where({ id }).first();
   }
   public async insert(item: T): Promise<T> {
     const [result] = <T[]>await this.entities.insert(item).returning<T>('*');

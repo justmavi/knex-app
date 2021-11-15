@@ -1,8 +1,8 @@
 import IRepository from '@interfaces/IRepository';
-import Employee from '@models/Employee';
+import User from '@models/User';
 
 export default interface IUnitOfWork {
-  Employees: IRepository<Employee>;
+  Users: IRepository<User>;
   commit(): Promise<void>;
   rollback(): Promise<void>;
 }
