@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 import { Inject, Service } from 'typedi';
 
-import * as TableNames from '@data/table_names';
+import { TABLE_USER } from '@data/table_names';
 import BaseRepository from '@implementations/BaseRepository';
 import IRepository from '@interfaces/IRepository';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
@@ -15,10 +15,7 @@ export default class UnitOfWork implements IUnitOfWork {
   constructor(@Inject('context') context: Knex.Transaction) {
     this.context = context;
 
-    this.usersRepository = new BaseRepository<User>(
-      context,
-      TableNames.TABLE_USER
-    );
+    this.usersRepository = new BaseRepository<User>(context, TABLE_USER);
   }
 
   public get Users(): IRepository<User> {

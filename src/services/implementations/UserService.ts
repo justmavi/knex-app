@@ -1,30 +1,33 @@
 import { Inject, Service } from 'typedi';
 
-import Model from '@abstractions/Model';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
 import IUserService from '@services/interfaces/IUserService';
+import User from '@models/User';
 
 @Service()
-export default class UserService<T extends Model<string>>
-  implements IUserService<T>
-{
-  constructor(private readonly unitOfWork: IUnitOfWork) {}
-  create(user: T, password: string): Promise<T> {
+export default class UserService implements IUserService<User> {
+  private readonly unitOfWork: IUnitOfWork;
+
+  constructor(unitOfWork: IUnitOfWork) {
+    this.unitOfWork = unitOfWork;
+  }
+
+  async create(user: User, password: string): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  delete(user: T): Promise<T> {
+  delete(user: User): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  edit(user: T): Promise<T> {
+  edit(user: User): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  block(user: T): Promise<T> {
+  block(user: User): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  unblock(user: T): Promise<T> {
+  unblock(user: User): Promise<User> {
     throw new Error('Method not implemented.');
   }
-  createPasswordResetHash(forUser: T): Promise<string> {
+  createPasswordResetHash(forUser: User): Promise<string> {
     throw new Error('Method not implemented.');
   }
   applyPasswordResetHash(hash: string, newPassword: string) {
