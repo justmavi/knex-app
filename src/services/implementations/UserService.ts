@@ -12,7 +12,7 @@ export default class UserService implements IUserService<User> {
     this.unitOfWork = unitOfWork;
   }
 
-  async create(user: User, password: string): Promise<User> {
+  create(user: User, password: string): Promise<User> {
     throw new Error('Method not implemented.');
   }
   delete(user: User): Promise<User> {

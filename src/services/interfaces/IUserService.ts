@@ -1,10 +1,12 @@
-export default interface ITUserService<TUser> {
-  create(user: TUser, password: string): Promise<TUser>;
-  delete(user: TUser): Promise<TUser>;
-  edit(user: TUser): Promise<TUser>;
+import IdentityResult from '@models/IdentityResult';
 
-  block(user: TUser): Promise<TUser>;
-  unblock(user: TUser): Promise<TUser>;
+export default interface ITUserService<TUser> {
+  create(user: TUser, password: string): Promise<IdentityResult>;
+  delete(user: TUser): Promise<IdentityResult>;
+  edit(user: TUser): Promise<IdentityResult>;
+
+  block(user: TUser): Promise<IdentityResult>;
+  unblock(user: TUser): Promise<IdentityResult>;
 
   createPasswordResetHash(forUser: TUser): Promise<string>;
   applyPasswordResetHash(hash: string, newPassword: string);

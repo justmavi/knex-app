@@ -19,7 +19,8 @@
       "@interfaces/*": ["domain/interfaces/*"],
       "@implementations/*": ["infrastructure/implementations/*"],
       "@data/*": ["infrastructure/data/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@errors/*": ["domain/errors/*"]
     }
   }
 }
