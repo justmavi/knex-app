@@ -8,7 +8,7 @@ export default class IdentityResult {
     return result;
   }
 
-  public static Failure(errors: Array<IdentityError>): IdentityResult {
+  public static failure(errors: Array<IdentityError>): IdentityResult {
     const result = new IdentityResult();
 
     result.succeeded = false;
