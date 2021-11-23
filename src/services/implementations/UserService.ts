@@ -3,6 +3,7 @@ import { Inject, Service } from 'typedi';
 import IUnitOfWork from '@interfaces/IUnitOfWork';
 import IUserService from '@services/interfaces/IUserService';
 import User from '@models/User';
+import IdentityResult from '@models/IdentityResult';
 
 @Service()
 export default class UserService implements IUserService<User> {
@@ -12,19 +13,19 @@ export default class UserService implements IUserService<User> {
     this.unitOfWork = unitOfWork;
   }
 
-  create(user: User, password: string): Promise<User> {
+  create(user: User, password: string): Promise<IdentityResult> {
     throw new Error('Method not implemented.');
   }
-  delete(user: User): Promise<User> {
+  delete(user: User): Promise<IdentityResult> {
     throw new Error('Method not implemented.');
   }
-  edit(user: User): Promise<User> {
+  edit(user: User): Promise<IdentityResult> {
     throw new Error('Method not implemented.');
   }
-  block(user: User): Promise<User> {
+  block(user: User): Promise<IdentityResult> {
     throw new Error('Method not implemented.');
   }
-  unblock(user: User): Promise<User> {
+  unblock(user: User): Promise<IdentityResult> {
     throw new Error('Method not implemented.');
   }
   createPasswordResetHash(forUser: User): Promise<string> {
