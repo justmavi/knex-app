@@ -1,9 +1,9 @@
 import { Inject, Service } from 'typedi';
 
 import IUnitOfWork from '@interfaces/IUnitOfWork';
-import IUserService from '@services/interfaces/IUserService';
-import User from '@models/User';
 import IdentityResult from '@models/IdentityResult';
+import User from '@models/User';
+import IUserService from '@services/interfaces/IUserService';
 
 @Service()
 export default class UserService implements IUserService<User> {
