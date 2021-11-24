@@ -20,7 +20,9 @@
       "@implementations/*": ["infrastructure/implementations/*"],
       "@data/*": ["infrastructure/data/*"],
       "@services/*": ["services/*"],
-      "@errors/*": ["domain/errors/*"]
+      "@errors/*": ["domain/errors/*"],
+      "@utils/*": ["infrastructure/utils/*"],
+      "@constants/*": ["infrastructure/constants/*"]
     }
   }
 }

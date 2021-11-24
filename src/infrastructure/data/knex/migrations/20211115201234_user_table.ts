@@ -7,8 +7,7 @@ export async function up(knex: Knex): Promise<void> {
     table.uuid('id').primary();
     table.string('name').notNullable();
     table.string('email').notNullable();
-    table.string('password').notNullable();
-    table.string('resetPasswordToken').nullable();
+    table.string('passwordHash').notNullable();
 
     table.index('name', 'user_name_idx');
     table.index('email', 'user_email_idx');
