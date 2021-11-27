@@ -7,7 +7,7 @@
     "start": "nodemon -r tsconfig-paths/register src/app.ts",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrations": "knex migrate:latest employee --knexfile src\\Infrastructure\\Data\\knex\\knexfile.ts "
+    "migrations": "knex migrate:latest --knexfile src\\Infrastructure\\Data\\knex\\knexfile.ts "
   },
   "keywords": [],
   "author": "",
